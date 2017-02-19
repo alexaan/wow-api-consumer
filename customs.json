@@ -1,0 +1,23 @@
+{
+  "elements": {},
+  "attributes": {
+    "v-if": {
+      "context": "div"
+    },
+    "v-on:click": {
+      "context": "a"
+    },
+    "v-for": {
+      "context": "div"
+    },
+    "v-cloak": {
+      "context": "div"
+    },
+    "aria-expanded": {
+      "context": "button"
+    },
+    "v-class": {
+      "context": "div"
+    }
+  }
+}

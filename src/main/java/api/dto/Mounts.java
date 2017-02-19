@@ -12,4 +12,5 @@ public class Mounts {
     private Integer numCollected;
     private Integer numNotCollected;
     private List<Mount> collected;
+    private List<Mount> notCollected;
 }

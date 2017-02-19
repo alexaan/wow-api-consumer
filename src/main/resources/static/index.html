@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Wow API Consumer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">WoW API Consumer</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/alexaan/wow-api-consumer">GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="content" v-cloak>
+    <div class="container" v-if="dataReady">
+
+        <h1>Character: {{characterMount.name}}-{{characterMount.realm}}</h1>
+
+        <p>Last refresh {{lastRefresh}}</p>
+
+        <div>
+            <h2>Collected mounts ({{characterMount.mounts.numCollected}} / {{characterMount.mounts.numCollected + characterMount.mounts.numNotCollected}})</h2>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Icon</th>
+                    <th>Creature</th>
+                    <th>Item</th>
+                </tr>
+                <tr v-for="mount in characterMount.mounts.collected">
+                    <td width="200">{{mount.name}}</td>
+                    <td width="300"><a href="{{mount.icon}}">{{mount.icon}}</a></td>
+                    <td width="100">{{mount.creatureId}}</td>
+                    <td width="200">{{mount.itemId}}</td>
+                </tr>
+            </table>
+
+            <h2>Uncollected mounts ({{characterMount.mounts.numNotCollected}} / {{characterMount.mounts.numCollected + characterMount.mounts.numNotCollected}})</h2>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Icon</th>
+                    <th>Creature</th>
+                    <th>Item</th>
+                </tr>
+                <tr v-for="mount in characterMount.mounts.notCollected">
+                    <td width="200">{{mount.name}}</td>
+                    <td width="300"><a href="{{mount.icon}}">{{mount.icon}}</a></td>
+                    <td width="100">{{mount.creatureId}}</td>
+                    <td width="200">{{mount.itemId}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer class="footer navbar-fixed-bottom">
+    <div class="container">
+        <p class="text-muted">Wow API Consumer is free and open source under Apache license 2.0</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/vue.resource/1.0.2/vue-resource.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
